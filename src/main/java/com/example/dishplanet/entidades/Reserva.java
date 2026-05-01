@@ -1,0 +1,31 @@
+package com.example.dishplanet.entidades;
+
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDateTime;
+/**
+ * Clase que representa las reservas en el sistema.
+ */
+@Builder
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "reserva")
+public class Reserva {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario usuario;
+
+
+    @Column(name = "fecha_Hora")
+    private LocalDateTime fechaHora;
+
+}

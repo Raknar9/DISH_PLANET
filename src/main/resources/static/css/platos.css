@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: "Roboto Light";
+}
+
+h1 {
+    text-align: center;
+    color: orangered;
+    text-shadow: 2px 2px 6px rgba(255, 255, 0, 0.7), -2px -2px 6px rgba(255, 165, 0, 0.7);
+}
+
+.card {
+    background-color: transparent;
+    border: none;
+}
+.card-body{background-color: transparent}
+
+.card-img-top {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+}
+
+body {
+    background-image: url("../img/a.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.footer-logo {
+    max-width: 150px;
+    height: auto;
+}
+.card-text { color: orangered;}
+
+.card-title{ color: orangered;}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.spinner-border {
+    width: 4rem;
+    height: 4rem;
+}

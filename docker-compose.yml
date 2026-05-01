@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  mysqlPlato:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mydb
+    volumes:
+      - ./mysql-init:/docker-entrypoint-initdb.d # Folder with initialization scripts
+      - ./mysql-data:/var/lib/mysql # Volume to persist MySQL data
+    ports:
+      - "3306:3306" # Expose MySQL port
+    networks:
+      - mynetwork
+
+  tomcat:
+    build:
+      context: .
+      dockerfile: Dockerfile # Dockerfile for Tomcat
+
+    ports:
+      - "8081:8080" # Map Tomcat's port to 8081 on the host
+    volumes:
+      - ./uploads:/uploads
+    networks:
+      - mynetwork
+
+volumes:
+  mysql-data:
+
+networks:
+  mynetwork:
+    driver: bridge
+

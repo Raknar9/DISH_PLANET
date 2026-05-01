@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head::encabezado(~{::title}, ~{::link})}">
+  <meta charset="UTF-8">
+  <title>Nuevo Menú</title>
+  <link rel="stylesheet" th:href="@{/css/nuevoMenu.css}">
+</head>
+<body>
+<nav th:replace="~{fragments/barraMenu::barraMenu}"></nav>
+<div class="container">
+  <div class="lottie-animation left">
+    <div id="left-animation"></div>
+  </div>
+  <div class="form-container">
+    <h1>Nuevo Menú</h1>
+    <form th:action="@{/menu/guardar}" method="post" th:object="${menu}" id="menuForm">
+      <label>Nombre:</label>
+      <input type="text" th:field="*{nombre}" id="nombre" required>
+      <span class="error" id="errorNombre"></span><br>
+
+      <label>Entrante:</label>
+      <input type="text" th:field="*{entrante}" id="entrante" required>
+      <span class="error" id="errorEntrante"></span><br>
+
+      <label>Principal:</label>
+      <input type="text" th:field="*{principal}" id="principal" required>
+      <span class="error" id="errorPrincipal"></span><br>
+
+      <label>Postre:</label>
+      <input type="text" th:field="*{postre}" id="postre" required>
+      <span class="error" id="errorPostre"></span><br>
+
+      <label>Bebida:</label>
+      <input type="text" th:field="*{bebida}" id="bebida" required>
+      <span class="error" id="errorBebida"></span><br>
+
+      <label>Precio:</label>
+      <input type="number" th:field="*{precio}" id="precio" required>
+      <span class="error" id="errorPrecio"></span><br>
+
+      <button type="submit">Guardar</button>
+    </form>
+
+  </div>
+  <div class="lottie-animation right">
+    <div id="right-animation"></div>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.11/lottie_svg.min.js"></script>
+<script th:src="@{/js/nuevoMenuAnimation.js}"></script>
+<script th:src="@{/js/validaciones.js}"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</body>
+</html>
+
