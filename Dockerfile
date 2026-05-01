@@ -1,11 +1,14 @@
-FROM tomcat:latest
+FROM eclipse-temurin:17-jdk
 
-# Remove default apps
-RUN rm -rf /usr/local/tomcat/webapps/*
+WORKDIR /app
 
-# Copy the WAR file to the Tomcat webapps directory
-COPY /target/DISHPLANET-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+COPY . .
+
+RUN chmod +x mvnw
+
+RUN ./mvnw clean package -DskipTests
 
 EXPOSE 8080
 
+CMD ["java", "-jar", "target/DISHPLANET-0.0.1-SNAPSHOT.jar"]
 
