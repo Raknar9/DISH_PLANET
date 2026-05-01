@@ -5,24 +5,27 @@
 </p>
 
 <p align="center">
-  <strong>Aplicacion web para la gestion de un restaurante: carta digital, pedidos, reservas, inventario, panel de administracion e informes.</strong>
+  <strong>Aplicacion web full stack para digitalizar la operativa de un restaurante: carta digital, pedidos, reservas, inventario, panel de administracion, notificaciones e informes.</strong>
 </p>
 
 <p align="center">
   <img alt="Java" src="https://img.shields.io/badge/Java-17-red?style=for-the-badge&logo=openjdk">
   <img alt="Spring Boot" src="https://img.shields.io/badge/Spring%20Boot-3.2.5-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
   <img alt="Thymeleaf" src="https://img.shields.io/badge/Thymeleaf-Templates-005F0F?style=for-the-badge&logo=thymeleaf">
-  <img alt="MySQL" src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+  <img alt="PostgreSQL" src="https://img.shields.io/badge/PostgreSQL-Cloud-4169E1?style=for-the-badge&logo=postgresql&logoColor=white">
   <img alt="Docker" src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white">
+  <img alt="Render" src="https://img.shields.io/badge/Render-Deployment-46E3B7?style=for-the-badge&logo=render&logoColor=black">
 </p>
 
 ---
 
 ## Vista general
 
-**DISH PLANET** es una aplicacion web desarrollada con **Spring Boot** para digitalizar la operativa de un restaurante. El proyecto permite navegar por una carta organizada por categorias, crear pedidos, gestionar reservas, controlar inventario en tiempo real y administrar platos, menus e informes desde un panel privado.
+**DISH PLANET** es una aplicacion web desarrollada con **Spring Boot** orientada a digitalizar la operativa de un restaurante mediante una plataforma moderna e interactiva.
 
-La aplicacion se despliega como archivo **WAR** en **Tomcat** y utiliza **MySQL** como base de datos principal. Incluye scripts de inicializacion con platos, menus, inventario base y un usuario administrador.
+La aplicacion permite navegar por la carta digital, gestionar pedidos, realizar reservas, controlar inventario, administrar platos y menus, recibir notificaciones en tiempo real, generar informes y gestionar usuarios con autenticacion segura.
+
+El proyecto utiliza una arquitectura full stack basada en **Spring Boot**, **Thymeleaf**, **PostgreSQL**, **Docker** y despliegue cloud en **Render**. La aplicacion esta preparada para despliegue cloud permanente utilizando **Render**, **Neon PostgreSQL** y **GitHub**.
 
 ---
 
@@ -30,47 +33,58 @@ La aplicacion se despliega como archivo **WAR** en **Tomcat** y utiliza **MySQL*
 
 ### Carta digital
 
-- Visualizacion de platos separados por **entrantes**, **principales**, **postres** y **bebidas**.
-- Seccion de **menus completos** con entrante, principal, postre, bebida y precio.
-- Imagen, descripcion, precio e ingredientes asociados a cada plato.
-- Ranking de menus mas pedidos en la pagina de inicio.
+- Visualizacion de platos separados por categorias:
+  - Entrantes
+  - Principales
+  - Postres
+  - Bebidas
+- Imagenes dinamicas de platos.
+- Ingredientes y descripcion detallada.
+- Menus completos con precio total.
+- Ranking de platos y menus mas pedidos.
 
 ### Pedidos
 
-- Agregar platos y menus al pedido.
-- Calculo automatico de **subtotal**, **IVA del 10%** y **descuento del 15%** para pedidos grandes.
-- Historial temporal de pedido mediante cookies.
-- Finalizacion del pedido y almacenamiento en la tabla de detalle.
-- Envio de recibo por correo electronico.
+- Anadir platos y menus al pedido.
+- Calculo automatico de subtotal, IVA y descuentos.
+- Persistencia temporal mediante cookies.
+- Confirmacion y almacenamiento de pedidos.
+- Generacion de historial.
+- Envio automatico de recibos por email.
 
 ### Reservas
 
-- Registro de reservas con fecha y hora.
-- Validacion de disponibilidad: maximo de reservas por franja horaria.
-- Consulta, busqueda y cancelacion de reservas desde el panel de administracion.
+- Registro de reservas por fecha y hora.
+- Validacion automatica de disponibilidad.
+- Gestion y cancelacion de reservas.
+- Panel administrativo de control.
 
 ### Inventario
 
-- Listado y busqueda de productos por nombre o categoria.
-- Actualizacion manual de cantidades.
-- Descuento de ingredientes al realizar pedidos.
-- Reposicion automatica cuando el stock baja del umbral definido.
-- Notificaciones de inventario mediante **WebSocket/STOMP**.
-- Alerta por email cuando se repone stock.
+- Gestion de stock en tiempo real.
+- Busqueda por nombre y categoria.
+- Actualizacion de cantidades.
+- Descuento automatico de ingredientes.
+- Reposicion automatica de productos.
+- Notificaciones mediante WebSocket/STOMP.
+- Alertas por correo electronico.
 
 ### Panel de administracion
 
-- Alta de nuevos platos con subida de imagen JPG/PNG.
-- Alta de nuevos menus.
-- Eliminacion de platos, menus e items de inventario.
-- Generacion de informe PDF de pedidos.
-- Acceso reservado al usuario administrador.
+- Alta de platos con imagenes.
+- Gestion de menus.
+- Gestion de inventario.
+- Eliminacion de elementos.
+- Generacion de informes PDF.
+- Acceso restringido para administradores.
 
-### Autenticacion
+### Seguridad y usuarios
 
-- Login y logout con **Spring Security**.
-- Registro de usuarios con contrasena cifrada mediante BCrypt.
-- Recuperacion de contrasena mediante codigo de verificacion por email.
+- Login y logout con Spring Security.
+- Contrasenas cifradas con BCrypt.
+- Registro de usuarios.
+- Recuperacion de contrasena por email.
+- Gestion de roles y autenticacion.
 
 ---
 
@@ -80,12 +94,13 @@ La aplicacion se despliega como archivo **WAR** en **Tomcat** y utiliza **MySQL*
 | --- | --- |
 | Backend | Java 17, Spring Boot 3.2.5, Spring MVC |
 | Seguridad | Spring Security, BCrypt |
-| Persistencia | Spring Data JPA, Hibernate, MySQL |
+| Persistencia | Spring Data JPA, Hibernate, PostgreSQL |
 | Frontend | Thymeleaf, HTML, CSS, JavaScript, Bootstrap, jQuery |
 | Tiempo real | Spring WebSocket, STOMP, SockJS |
 | Email | Spring Mail, Jakarta Mail |
 | PDF | iText |
-| Contenedores | Docker, Docker Compose, Tomcat |
+| Cloud | Render, Neon PostgreSQL |
+| Contenedores | Docker |
 | Testing | JUnit, Mockito, Spring Boot Test |
 
 ---
@@ -97,92 +112,164 @@ DISHPLANET
 ├── src
 │   ├── main
 │   │   ├── java/com/example/dishplanet
-│   │   │   ├── config              # Configuracion web, WebSocket y utilidades
-│   │   │   ├── controladores       # Controladores MVC
-│   │   │   ├── controladoresRest   # Validaciones AJAX
-│   │   │   ├── entidades           # Entidades JPA
-│   │   │   ├── repositorios        # Repositorios Spring Data
-│   │   │   ├── seguridad           # Configuracion de seguridad
-│   │   │   └── servicios           # Logica de negocio
+│   │   │   ├── config
+│   │   │   ├── controladores
+│   │   │   ├── controladoresRest
+│   │   │   ├── entidades
+│   │   │   ├── repositorios
+│   │   │   ├── seguridad
+│   │   │   └── servicios
 │   │   └── resources
-│   │       ├── static              # CSS, JS, imagenes y animaciones
-│   │       ├── templates           # Vistas Thymeleaf
-│   │       └── application.properties
-│   └── test                        # Tests unitarios e integracion basica
-├── mysql-init                      # Scripts SQL de esquema y datos iniciales
-├── Dockerfile                      # Imagen Tomcat para desplegar el WAR
-├── docker-compose.yml              # Servicios MySQL + Tomcat
-└── pom.xml                         # Configuracion Maven
+│   │       ├── static
+│   │       │   └── img
+│   │       ├── templates
+│   │       ├── application.properties
+│   │       └── data.sql
+│   └── test
+├── Dockerfile
+├── pom.xml
+└── README.md
 ```
+
+---
+
+## Base de datos
+
+La aplicacion utiliza **PostgreSQL** desplegado en la nube mediante **Neon**.
+
+Las tablas se generan automaticamente mediante **Hibernate/JPA** y los datos iniciales se cargan automaticamente desde:
+
+```text
+src/main/resources/data.sql
+```
+
+Esto permite:
+
+- Reconstruccion automatica del entorno.
+- Despliegues reproducibles.
+- Demos persistentes.
+- Inicializacion automatica de datos.
 
 ---
 
 ## Modelo de datos
 
-La base de datos se inicializa con los scripts de `mysql-init` e incluye las siguientes tablas principales:
+Principales entidades del sistema:
 
-- `Usuario`: usuarios registrados y administrador.
-- `Plato`: platos de la carta con tipo, precio, imagen e ingredientes.
-- `menu`: menus compuestos y contador de veces pedidas.
-- `Pedido`: pedidos activos.
-- `Detalle_Pedido`: historico de pedidos finalizados.
-- `Ingredientes_Usados`: ingredientes consumidos por platos y menus.
-- `Reserva`: reservas asociadas a usuarios.
-- `Inventario`: stock, categorias, unidades y precio unitario.
+- `usuario`
+- `plato`
+- `menu`
+- `pedido`
+- `detalle_pedido`
+- `inventario`
+- `ingredientes_usados`
+- `reserva`
 
 ---
 
-## Instalacion y ejecucion
+## Imagenes y recursos estaticos
+
+Las imagenes de platos y menus se almacenan en:
+
+```text
+src/main/resources/static/img
+```
+
+Y son servidas automaticamente por Spring Boot.
+
+Ejemplo:
+
+```text
+/img/fideosSalteados.jpg
+```
+
+---
+
+## Instalacion y ejecucion local
 
 ### Requisitos
 
 - Java 17
 - Maven
 - Docker Desktop
-- Puertos disponibles:
-  - `8081` para la aplicacion
-  - `3306` para MySQL
+- PostgreSQL
 
-### 1. Clonar el repositorio
+### 1. Clonar repositorio
 
 ```bash
 git clone <url-del-repositorio>
-cd <nombre-del-repositorio>
+cd DISH_PLANET
 ```
 
-### 2. Construir el WAR
+### 2. Configurar variables de entorno
+
+```bash
+DB_URL=
+DB_USERNAME=
+DB_PASSWORD=
+MAIL_USERNAME=
+MAIL_PASSWORD=
+```
+
+### 3. Compilar proyecto
 
 ```bash
 mvn clean package -DskipTests
 ```
 
-Tambien puedes usar el wrapper incluido:
+### 4. Ejecutar aplicacion
 
 ```bash
-./mvnw clean package -DskipTests
+java -jar target/DISHPLANET-0.0.1-SNAPSHOT.jar
 ```
 
-En Windows:
-
-```bash
-mvnw.cmd clean package -DskipTests
-```
-
-### 3. Levantar los contenedores
-
-```bash
-docker compose up --build
-```
-
-El `docker-compose.yml` levanta:
-
-- Un contenedor **MySQL** con la base de datos `mydb`.
-- Un contenedor **Tomcat** que despliega `DISHPLANET-0.0.1-SNAPSHOT.war` como aplicacion raiz.
-
-### 4. Abrir la aplicacion
+### 5. Abrir aplicacion
 
 ```text
-http://localhost:8081
+http://localhost:8080
+```
+
+---
+
+## Despliegue cloud
+
+La aplicacion esta preparada para despliegue automatico mediante:
+
+- Render
+- Docker
+- PostgreSQL Neon
+- GitHub CI/CD
+
+### Flujo de despliegue
+
+```text
+GitHub
+↓
+Render Build
+↓
+Docker
+↓
+Spring Boot
+↓
+Neon PostgreSQL
+↓
+Aplicacion online
+```
+
+---
+
+## Despliegue Docker
+
+### Construccion
+
+```bash
+docker build -t dishplanet .
+```
+
+### Ejecucion
+
+```bash
+docker run -p 8080:8080 dishplanet
 ```
 
 ---
@@ -191,33 +278,30 @@ http://localhost:8081
 
 | Ruta | Descripcion |
 | --- | --- |
-| `/` | Pagina de inicio con slider y menus destacados |
+| `/` | Pagina principal |
 | `/plato/entrantes` | Carta de entrantes |
-| `/plato/principales` | Carta de platos principales |
+| `/plato/principales` | Carta de principales |
 | `/plato/postres` | Carta de postres |
 | `/plato/bebidas` | Carta de bebidas |
 | `/menu/menus` | Menus completos |
 | `/pedido/pedidos` | Resumen del pedido |
-| `/pedido/verPedidos` | Historial temporal del pedido |
-| `/reservas` | Formulario de reserva |
-| `/consultar-reservas` | Gestion de reservas para administrador |
-| `/inventario` | Inventario para administrador |
-| `/panel` | Panel de administracion |
+| `/reservas` | Sistema de reservas |
+| `/inventario` | Gestion de inventario |
+| `/panel` | Panel administrativo |
 | `/usuario/login` | Inicio de sesion |
-| `/usuario/signup` | Registro |
+| `/usuario/signup` | Registro de usuarios |
 
 ---
 
-## Pruebas
+## Testing
 
-El proyecto incluye tests sobre servicios clave:
+El proyecto incluye pruebas unitarias e integracion basica utilizando:
 
-- `UserServiceTest`
-- `InventarioServiceTest`
-- `EmailServiceTest`
-- `DishplanetApplicationTests`
+- JUnit
+- Mockito
+- Spring Boot Test
 
-Para ejecutarlos:
+Ejecutar tests:
 
 ```bash
 mvn test
@@ -225,20 +309,24 @@ mvn test
 
 ---
 
+## Caracteristicas tecnicas destacadas
 
-## Despliegue con Docker
-
-El despliegue esta preparado para un flujo sencillo:
-
-1. Maven genera el WAR en `target/`.
-2. Docker construye una imagen Tomcat.
-3. El WAR se copia como `ROOT.war`.
-4. MySQL carga automaticamente los scripts SQL de `mysql-init`.
-5. La aplicacion queda disponible en `localhost:8081`.
+- Arquitectura MVC.
+- Persistencia JPA/Hibernate.
+- Seguridad Spring Security.
+- WebSockets en tiempo real.
+- Integracion SMTP.
+- Docker deployment.
+- PostgreSQL cloud.
+- CI/CD automatico.
+- Inicializacion automatica de datos.
+- Gestion de imagenes estaticas.
+- Backend y frontend integrados.
 
 ---
 
 ## Autor
-Miguel Aguilera
-Proyecto desarrollado como sistema web de gestion para restaurante, integrando carta digital, pedidos, reservas, inventario y administracion en una unica aplicacion.
 
+**Miguel Aguilera**
+
+Proyecto desarrollado como sistema web full stack para la gestion digital de restaurantes, integrando carta interactiva, reservas, pedidos, inventario, administracion y despliegue cloud profesional en una unica plataforma.
